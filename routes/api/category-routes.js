@@ -5,12 +5,12 @@ const { Category, Product } = require('../../models');
 
 router.get('/', (req, res) => {
   // find all categories
-  // be sure to include its associated Products
   Category.findAll({
     attributes: [
       'id',
       'category_name'
     ],
+    // be sure to include its associated Products
     include: [
       {
         model: Product,
@@ -107,5 +107,6 @@ router.delete('/:id', (req, res) => {
     res.status(500).json(err)
   });
 });
+
 
 module.exports = router;
